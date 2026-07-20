@@ -18,4 +18,12 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
+  overrides: [
+    {
+      // Thin wrapper components around Radix UI primitives — PropTypes add
+      // little value here since props are just forwarded through.
+      files: ['src/components/ui/**/*.jsx'],
+      rules: { 'react/prop-types': 'off' },
+    },
+  ],
 }
