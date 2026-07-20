@@ -65,7 +65,7 @@ This is a personal portfolio website built using **React**, **TailwindCSS**, and
 ### Clone and Run
 
 ```bash
-git clone https://github.com/JoseOtavioJunqueira/Portfolio-React.git
+git clone https://github.com/JoseOtavioJunqueira/developer-portfolio-react.git
 npm install
 npm run dev
 ```
