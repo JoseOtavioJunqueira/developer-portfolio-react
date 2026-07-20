@@ -19,13 +19,20 @@ export const ContactSection = () => {
 
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
-      });
-      setIsSubmitting(false);
-    }, 1500);
+    const formData = new FormData(e.target);
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const message = formData.get("message");
+
+    const subject = encodeURIComponent(`Portfolio contact from ${name}`);
+    const body = encodeURIComponent(`${message}\n\nFrom: ${name} (${email})`);
+    window.location.href = `mailto:joseotavio.jr1104@gmail.com?subject=${subject}&body=${body}`;
+
+    toast({
+      title: "Opening your email client...",
+      description: "Send the pre-filled message to reach me directly.",
+    });
+    setIsSubmitting(false);
   };
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
@@ -36,7 +43,7 @@ export const ContactSection = () => {
 
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
           Have a project in mind or want to collaborate? Feel free to reach out.
-          I'm always open to discussing new opportunities.
+          I&apos;m always open to discussing new opportunities.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -68,7 +75,7 @@ export const ContactSection = () => {
                 <div>
                   <h4 className="font-medium"> Phone</h4>
                   <a
-                    href="tel:+11234567890"
+                    href="tel:+5517996804466"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     (+55) 17 99680-4466
@@ -101,13 +108,10 @@ export const ContactSection = () => {
             </div>
           </div>
 
-          <div
-            className="bg-card p-8 rounded-lg shadow-xs"
-            onSubmit={handleSubmit}
-          >
+          <div className="bg-card p-8 rounded-lg shadow-xs">
             <h3 className="text-2xl font-semibold mb-6"> Send a Message</h3>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="name"
