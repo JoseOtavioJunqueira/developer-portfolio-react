@@ -54,17 +54,29 @@ export const translations = {
       viewGithub: "Check My Github",
       items: {
         1: {
-          title: "TaskMaster",
+          title: "Itaú Backend Challenge",
           description:
-            "Login system built with Flask and a task management interface styled using HTML, CSS, and JavaScript.",
+            "Solution to Itaú's backend take-home challenge: a REST API that records transactions and computes real-time statistics (sum, average, min, max) with proper validation and error handling.",
         },
         2: {
-          title: "Impacto Marcenaria",
-          description: "Company Website",
+          title: "TaskMaster",
+          description:
+            "Full-stack task management app with server-side authentication and per-user task CRUD, built with Flask, Flask-Login and SQLAlchemy.",
         },
         3: {
-          title: "Visio.ai",
-          description: "Company Website",
+          title: "Portfolio Selection Models",
+          description:
+            "Backtests of factor-based stock ranking strategies (ROIC, momentum, volatility) for portfolio selection against the IBOVESPA benchmark.",
+        },
+        4: {
+          title: "Quantitative Investment Strategies",
+          description:
+            "Machine learning models for monthly asset allocation and technical-indicator trading signals, evaluated with honest backtest reporting.",
+        },
+        6: {
+          title: "Sales Prediction ML",
+          description:
+            "Machine learning pipeline that compares Linear Regression and Random Forest to predict sales from advertising spend and auto-selects the best model by R².",
         },
       },
     },
@@ -155,17 +167,29 @@ export const translations = {
       viewGithub: "Ver Meu Github",
       items: {
         1: {
-          title: "TaskMaster",
+          title: "Itaú Backend Challenge",
           description:
-            "Sistema de login construído com Flask e uma interface de gerenciamento de tarefas estilizada com HTML, CSS e JavaScript.",
+            "Solução do desafio de back-end do Itaú: uma API REST que registra transações e calcula estatísticas em tempo real (soma, média, mínimo, máximo), com validação e tratamento de erros adequados.",
         },
         2: {
-          title: "Impacto Marcenaria",
-          description: "Site Institucional",
+          title: "TaskMaster",
+          description:
+            "Aplicação full-stack de gerenciamento de tarefas com autenticação no servidor e CRUD de tarefas por usuário, construída com Flask, Flask-Login e SQLAlchemy.",
         },
         3: {
-          title: "Visio.ai",
-          description: "Site Institucional",
+          title: "Portfolio Selection Models",
+          description:
+            "Backtests de estratégias de seleção de carteiras baseadas em fatores (ROIC, momentum, volatilidade) comparadas ao benchmark do IBOVESPA.",
+        },
+        4: {
+          title: "Quantitative Investment Strategies",
+          description:
+            "Modelos de machine learning para alocação mensal de ativos e sinais de negociação baseados em indicadores técnicos, com relatórios honestos de backtest.",
+        },
+        6: {
+          title: "Sales Prediction ML",
+          description:
+            "Pipeline de machine learning que compara Regressão Linear e Random Forest para prever vendas a partir de investimento em publicidade, selecionando automaticamente o melhor modelo por R².",
         },
       },
     },

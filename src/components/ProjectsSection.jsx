@@ -4,24 +4,33 @@ import { useLanguage } from "@/context/LanguageContext";
 const projects = [
   {
     id: 1,
-    image: "/projects/project1.png",
-    tags: ["HTML/CSS", "JavaScript", "Python", "SQL"],
-    demoUrl: "#",
-    githubUrl: "https://github.com/JoseOtavioJunqueira/FlaskLogin",
+    image: "/projects/itau-backend.png",
+    tags: ["Java", "Spring Boot", "Docker"],
+    githubUrl: "https://github.com/JoseOtavioJunqueira/desafio-itau-backend",
   },
   {
     id: 2,
-    image: "/projects/project2.png",
-    tags: ["HTML/CSS", "JavaScript"],
-    demoUrl: "https://impactomarcenaria.com.br/",
-    githubUrl: "#",
+    image: "/projects/project1.png",
+    tags: ["Python", "Flask", "SQLAlchemy"],
+    githubUrl: "https://github.com/JoseOtavioJunqueira/taskmaster-flask",
   },
   {
     id: 3,
-    image: "/projects/project3.png",
-    tags: ["HTML/CSS", "JavaScript", "Webflow", "Node.js", "SQL"],
-    demoUrl: "https://www.visio.ai/",
-    githubUrl: "#",
+    image: "/projects/portfolio-selection.png",
+    tags: ["Python", "pandas", "NumPy"],
+    githubUrl: "https://github.com/JoseOtavioJunqueira/portfolio-selection-models",
+  },
+  {
+    id: 4,
+    image: "/projects/quant-strategies.png",
+    tags: ["Python", "scikit-learn", "yfinance"],
+    githubUrl: "https://github.com/JoseOtavioJunqueira/quantitative-investment-strategies",
+  },
+  {
+    id: 6,
+    image: "/projects/sales-prediction.png",
+    tags: ["Python", "scikit-learn", "pandas"],
+    githubUrl: "https://github.com/JoseOtavioJunqueira/sales-prediction-ml",
   },
 ];
 
@@ -74,26 +83,34 @@ export const ProjectsSection = () => {
                 <p className="text-muted-foreground text-sm mb-4">
                   {t(`projects.items.${project.id}.description`)}
                 </p>
-                <div className="flex justify-between items-center">
-                  <div className="flex space-x-3">
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                    >
-                      <ExternalLink size={20} />
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                    >
-                      <Github size={20} />
-                    </a>
+                {(project.demoUrl || project.githubUrl) && (
+                  <div className="flex justify-between items-center">
+                    <div className="flex space-x-3">
+                      {project.demoUrl && (
+                        <a
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="Live demo"
+                          className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                        >
+                          <ExternalLink size={20} />
+                        </a>
+                      )}
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="Source code on GitHub"
+                          className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                        >
+                          <Github size={20} />
+                        </a>
+                      )}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           ))}
