@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0b14"/>
+      <stop offset="100%" stop-color="#161229"/>
+    </linearGradient>
+    <linearGradient id="badge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b7ae6"/>
+      <stop offset="100%" stop-color="#5b3fd6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1080" cy="90" r="3" fill="#ffffff" opacity="0.6"/>
+  <circle cx="1140" cy="200" r="2" fill="#ffffff" opacity="0.5"/>
+  <circle cx="980" cy="150" r="2" fill="#ffffff" opacity="0.4"/>
+  <circle cx="120" cy="520" r="2" fill="#ffffff" opacity="0.4"/>
+  <circle cx="200" cy="90" r="2" fill="#ffffff" opacity="0.5"/>
+  <circle cx="60" cy="180" r="3" fill="#ffffff" opacity="0.5"/>
+
+  <rect x="100" y="140" width="96" height="96" rx="24" fill="url(#badge)"/>
+  <text x="148" y="204" text-anchor="middle" font-family="Verdana, Geneva, sans-serif" font-weight="700" font-size="38" fill="#f5f3ff">JO</text>
+
+  <text x="100" y="330" font-family="Verdana, Geneva, sans-serif" font-weight="700" font-size="58" fill="#ffffff">José Otávio</text>
+  <text x="100" y="385" font-family="Verdana, Geneva, sans-serif" font-weight="400" font-size="34" fill="#a89ef0">Backend Developer</text>
+  <text x="100" y="440" font-family="Verdana, Geneva, sans-serif" font-weight="400" font-size="24" fill="#9aa0b4">APIs · Databases · Scalable Systems</text>
+</svg>

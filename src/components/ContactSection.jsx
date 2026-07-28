@@ -9,8 +9,10 @@ import {
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const ContactSection = () => {
+  const { t } = useLanguage();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -29,8 +31,8 @@ export const ContactSection = () => {
     window.location.href = `mailto:joseotavio.jr1104@gmail.com?subject=${subject}&body=${body}`;
 
     toast({
-      title: "Opening your email client...",
-      description: "Send the pre-filled message to reach me directly.",
+      title: t("contact.toastTitle"),
+      description: t("contact.toastDesc"),
     });
     setIsSubmitting(false);
   };
@@ -38,19 +40,19 @@ export const ContactSection = () => {
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Get In <span className="text-primary"> Touch</span>
+          {t("contact.title")}{" "}
+          <span className="text-primary"> {t("contact.titleHighlight")}</span>
         </h2>
 
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Have a project in mind or want to collaborate? Feel free to reach out.
-          I&apos;m always open to discussing new opportunities.
+          {t("contact.subtitle")}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="space-y-8">
             <h3 className="text-2xl font-semibold mb-6">
               {" "}
-              Contact Information
+              {t("contact.infoTitle")}
             </h3>
 
             <div className="space-y-6 justify-center">
@@ -59,7 +61,7 @@ export const ContactSection = () => {
                   <Mail className="h-6 w-6 text-primary" />{" "}
                 </div>
                 <div>
-                  <h4 className="font-medium"> Email</h4>
+                  <h4 className="font-medium"> {t("contact.emailLabel")}</h4>
                   <a
                     href="mailto:joseotavio.jr1104@gmail.com"
                     className="text-muted-foreground hover:text-primary transition-colors"
@@ -73,7 +75,7 @@ export const ContactSection = () => {
                   <Phone className="h-6 w-6 text-primary" />{" "}
                 </div>
                 <div>
-                  <h4 className="font-medium"> Phone</h4>
+                  <h4 className="font-medium"> {t("contact.phoneLabel")}</h4>
                   <a
                     href="tel:+5517996804466"
                     className="text-muted-foreground hover:text-primary transition-colors"
@@ -87,21 +89,34 @@ export const ContactSection = () => {
                   <MapPin className="h-6 w-6 text-primary" />{" "}
                 </div>
                 <div>
-                  <h4 className="font-medium"> Location</h4>
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
-                    São Carlos, SP, Brazil
-                  </a>
+                  <h4 className="font-medium">
+                    {" "}
+                    {t("contact.locationLabel")}
+                  </h4>
+                  <span className="text-muted-foreground">
+                    {t("contact.locationValue")}
+                  </span>
                 </div>
               </div>
             </div>
 
             <div className="pt-8">
-              <h4 className="font-medium mb-4"> Connect With Me</h4>
+              <h4 className="font-medium mb-4"> {t("contact.connect")}</h4>
               <div className="flex space-x-4 justify-center">
-                <a href="https://www.linkedin.com/in/joseotaviojunqueiraramos/" target="_blank">
+                <a
+                  href="https://www.linkedin.com/in/joseotaviojunqueiraramos/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
                   <Linkedin />
                 </a>
-                <a href="https://www.instagram.com/joseota_eu/" target="_blank">
+                <a
+                  href="https://www.instagram.com/joseota_eu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
                   <Instagram />
                 </a>
               </div>
@@ -109,7 +124,10 @@ export const ContactSection = () => {
           </div>
 
           <div className="bg-card p-8 rounded-lg shadow-xs">
-            <h3 className="text-2xl font-semibold mb-6"> Send a Message</h3>
+            <h3 className="text-2xl font-semibold mb-6">
+              {" "}
+              {t("contact.formTitle")}
+            </h3>
 
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
@@ -118,15 +136,15 @@ export const ContactSection = () => {
                   className="block text-sm font-medium mb-2"
                 >
                   {" "}
-                  Your Name
+                  {t("contact.nameLabel")}
                 </label>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="Jhon Kennedy..."
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
+                  placeholder={t("contact.namePlaceholder")}
                 />
               </div>
 
@@ -136,15 +154,15 @@ export const ContactSection = () => {
                   className="block text-sm font-medium mb-2"
                 >
                   {" "}
-                  Your Email
+                  {t("contact.emailFieldLabel")}
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
-                  placeholder="john@gmail.com"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
+                  placeholder={t("contact.emailPlaceholder")}
                 />
               </div>
 
@@ -154,14 +172,14 @@ export const ContactSection = () => {
                   className="block text-sm font-medium mb-2"
                 >
                   {" "}
-                  Your Message
+                  {t("contact.messageLabel")}
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary resize-none"
-                  placeholder="Hello, I'd like to talk about..."
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary resize-none"
+                  placeholder={t("contact.messagePlaceholder")}
                 />
               </div>
 
@@ -172,7 +190,7 @@ export const ContactSection = () => {
                   "cosmic-button w-full flex items-center justify-center gap-2"
                 )}
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting ? t("contact.sending") : t("contact.send")}
                 <Send size={16} />
               </button>
             </form>
