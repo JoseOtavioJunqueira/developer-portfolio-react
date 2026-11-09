@@ -3,25 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#161229" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#080b12" />
+    <script>
+      // Dark ("terminal") theme by default; apply before first paint to avoid a flash.
+      try {
+        if (localStorage.getItem("theme") !== "light") document.documentElement.classList.add("dark");
+      } catch (e) {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
 
     <title>José Otávio | Backend Developer</title>
     <meta
       name="description"
-      content="José Otávio is a backend developer specializing in APIs, databases, and scalable server-side systems using Python, Node.js, and modern backend technologies."
+      content="José Otávio is a backend developer specializing in APIs, third-party integrations, databases, and data pipelines. Open to remote and international opportunities."
     />
     <meta name="author" content="José Otávio Junqueira" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate icon" href="/favicon.ico" />
+    <link rel="alternate icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="José Otávio | Backend Developer" />
     <meta
       property="og:description"
-      content="Backend developer specializing in APIs, databases, and scalable server-side systems using Python, Node.js, and modern backend technologies."
+      content="Backend developer specializing in APIs, third-party integrations, databases, and data pipelines. Open to remote and international opportunities."
     />
     <meta property="og:image" content="/og-image.png" />
 
@@ -29,7 +42,7 @@
     <meta name="twitter:title" content="José Otávio | Backend Developer" />
     <meta
       name="twitter:description"
-      content="Backend developer specializing in APIs, databases, and scalable server-side systems using Python, Node.js, and modern backend technologies."
+      content="Backend developer specializing in APIs, third-party integrations, databases, and data pipelines. Open to remote and international opportunities."
     />
     <meta name="twitter:image" content="/og-image.png" />
   </head>

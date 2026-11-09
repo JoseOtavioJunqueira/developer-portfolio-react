@@ -3,18 +3,24 @@ import { translations } from "@/lib/translations";
 
 const LanguageContext = createContext(undefined);
 
+// English is the default language. Portuguese only applies if the visitor chose it.
 const getInitialLanguage = () => {
-  const stored = localStorage.getItem("language");
-  if (stored === "en" || stored === "pt") return stored;
-  return navigator.language?.toLowerCase().startsWith("pt") ? "pt" : "en";
+  try {
+    return localStorage.getItem("language") === "pt" ? "pt" : "en";
+  } catch {
+    return "en";
+  }
 };
 
-// eslint-disable-next-line react/prop-types -- children is a standard React node prop
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState(getInitialLanguage);
 
   useEffect(() => {
-    localStorage.setItem("language", language);
+    try {
+      localStorage.setItem("language", language);
+    } catch {
+      /* storage unavailable */
+    }
     document.documentElement.lang = language === "pt" ? "pt-BR" : "en";
   }, [language]);
 
@@ -29,8 +35,14 @@ export const LanguageProvider = ({ children }) => {
     return value ?? key;
   };
 
+  // The CV matches the selected language.
+  const cvUrl =
+    language === "pt"
+      ? "/cv/Jose_Otavio_Junqueira_Ramos_Curriculo_PT-BR.pdf"
+      : "/cv/Jose_Otavio_Junqueira_Ramos_Resume_EN.pdf";
+
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
+    <LanguageContext.Provider value={{ language, toggleLanguage, t, cvUrl }}>
       {children}
     </LanguageContext.Provider>
   );

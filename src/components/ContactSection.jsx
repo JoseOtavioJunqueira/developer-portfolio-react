@@ -1,15 +1,16 @@
-import {
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-  Send,
-} from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Linkedin, Github, Mail, MapPin, Phone, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import { Reveal } from "@/components/Reveal";
+import { SectionHeading } from "@/components/SectionHeading";
+import { TerminalWindow } from "@/components/TypedTerminal";
+
+const EMAIL = "joseotavio.jr1104@gmail.com";
+
+const inputClass =
+  "w-full px-4 py-3 rounded-md border border-border bg-background/70 font-mono text-sm outline-none transition-all " +
+  "focus:border-primary focus:shadow-[0_0_0_3px_hsl(var(--primary)/0.15)] placeholder:text-muted-foreground/60";
 
 export const ContactSection = () => {
   const { t } = useLanguage();
@@ -18,7 +19,6 @@ export const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setIsSubmitting(true);
 
     const formData = new FormData(e.target);
@@ -28,7 +28,7 @@ export const ContactSection = () => {
 
     const subject = encodeURIComponent(`Portfolio contact from ${name}`);
     const body = encodeURIComponent(`${message}\n\nFrom: ${name} (${email})`);
-    window.location.href = `mailto:joseotavio.jr1104@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
 
     toast({
       title: t("contact.toastTitle"),
@@ -36,165 +36,129 @@ export const ContactSection = () => {
     });
     setIsSubmitting(false);
   };
+
+  const info = [
+    { icon: Mail, label: t("contact.emailLabel"), value: EMAIL, href: `mailto:${EMAIL}` },
+    { icon: Phone, label: t("contact.phoneLabel"), value: "(+55) 17 99680-4466", href: "tel:+5517996804466" },
+    { icon: MapPin, label: t("contact.locationLabel"), value: t("contact.locationValue") },
+  ];
+
+  const socials = [
+    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/joseotaviojunqueiraramos/" },
+    { icon: Github, label: "GitHub", href: "https://github.com/JoseOtavioJunqueira" },
+  ];
+
   return (
-    <section id="contact" className="py-24 px-4 relative bg-secondary/30">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          {t("contact.title")}{" "}
-          <span className="text-primary"> {t("contact.titleHighlight")}</span>
-        </h2>
+    <section id="contact" className="py-24 px-4 relative">
+      <div className="container max-w-6xl">
+        <SectionHeading
+          label={t("contact.label")}
+          title={t("contact.title")}
+          highlight={t("contact.titleHighlight")}
+          subtitle={t("contact.subtitle")}
+        />
 
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          {t("contact.subtitle")}
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <h3 className="text-2xl font-semibold mb-6">
-              {" "}
-              {t("contact.infoTitle")}
-            </h3>
-
-            <div className="space-y-6 justify-center">
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary" />{" "}
+        <div className="grid lg:grid-cols-2 gap-10 text-left">
+          <Reveal className="space-y-8">
+            <h3 className="text-2xl font-semibold">{t("contact.infoTitle")}</h3>
+            <div className="space-y-5">
+              {info.map(({ icon: Icon, label, value, href }) => (
+                <div key={label} className="flex items-start gap-4">
+                  <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                      {label}
+                    </h4>
+                    {href ? (
+                      <a href={href} className="hover:text-primary transition-colors break-all">
+                        {value}
+                      </a>
+                    ) : (
+                      <span>{value}</span>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-medium"> {t("contact.emailLabel")}</h4>
-                  <a
-                    href="mailto:joseotavio.jr1104@gmail.com"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    joseotavio.jr1104@gmail.com
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Phone className="h-6 w-6 text-primary" />{" "}
-                </div>
-                <div>
-                  <h4 className="font-medium"> {t("contact.phoneLabel")}</h4>
-                  <a
-                    href="tel:+5517996804466"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    (+55) 17 99680-4466
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <MapPin className="h-6 w-6 text-primary" />{" "}
-                </div>
-                <div>
-                  <h4 className="font-medium">
-                    {" "}
-                    {t("contact.locationLabel")}
-                  </h4>
-                  <span className="text-muted-foreground">
-                    {t("contact.locationValue")}
-                  </span>
-                </div>
-              </div>
+              ))}
             </div>
 
-            <div className="pt-8">
-              <h4 className="font-medium mb-4"> {t("contact.connect")}</h4>
-              <div className="flex space-x-4 justify-center">
-                <a
-                  href="https://www.linkedin.com/in/joseotaviojunqueiraramos/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin />
-                </a>
-                <a
-                  href="https://www.instagram.com/joseota_eu/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                >
-                  <Instagram />
-                </a>
+            <div>
+              <h4 className="font-mono text-xs uppercase tracking-wider text-muted-foreground mb-3">
+                {t("contact.connect")}
+              </h4>
+              <div className="flex gap-3">
+                {socials.map(({ icon: Icon, label, href }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="p-3 rounded-lg border border-border bg-card/70 transition-all hover:border-primary hover:text-primary hover:-translate-y-1 hover:shadow-[0_0_18px_hsl(var(--primary)/0.35)]"
+                  >
+                    <Icon size={20} />
+                  </a>
+                ))}
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="bg-card p-8 rounded-lg shadow-xs">
-            <h3 className="text-2xl font-semibold mb-6">
-              {" "}
-              {t("contact.formTitle")}
-            </h3>
-
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium mb-2"
-                >
-                  {" "}
-                  {t("contact.nameLabel")}
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
-                  placeholder={t("contact.namePlaceholder")}
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium mb-2"
-                >
-                  {" "}
-                  {t("contact.emailFieldLabel")}
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
-                  placeholder={t("contact.emailPlaceholder")}
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium mb-2"
-                >
-                  {" "}
-                  {t("contact.messageLabel")}
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary resize-none"
-                  placeholder={t("contact.messagePlaceholder")}
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={cn(
-                  "cosmic-button w-full flex items-center justify-center gap-2"
-                )}
-              >
-                {isSubmitting ? t("contact.sending") : t("contact.send")}
-                <Send size={16} />
-              </button>
-            </form>
-          </div>
+          <Reveal delay={150}>
+            <TerminalWindow title={t("contact.formTitle")}>
+              <form className="p-6 space-y-5" onSubmit={handleSubmit}>
+                <div>
+                  <label htmlFor="name" className="block font-mono text-xs text-primary mb-2">
+                    {'"'}
+                    {t("contact.nameLabel")}
+                    {'":'}
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    className={inputClass}
+                    placeholder={t("contact.namePlaceholder")}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block font-mono text-xs text-primary mb-2">
+                    {'"'}
+                    {t("contact.emailFieldLabel")}
+                    {'":'}
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    className={inputClass}
+                    placeholder={t("contact.emailPlaceholder")}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" className="block font-mono text-xs text-primary mb-2">
+                    {'"'}
+                    {t("contact.messageLabel")}
+                    {'":'}
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={5}
+                    className={`${inputClass} resize-none`}
+                    placeholder={t("contact.messagePlaceholder")}
+                  />
+                </div>
+                <button type="submit" disabled={isSubmitting} className="neon-button w-full">
+                  {isSubmitting ? t("contact.sending") : t("contact.send")}
+                  <Send size={16} />
+                </button>
+              </form>
+            </TerminalWindow>
+          </Reveal>
         </div>
       </div>
     </section>

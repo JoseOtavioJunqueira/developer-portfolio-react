@@ -7,7 +7,7 @@ export const NotFound = () => {
     <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-background text-foreground px-4">
       <h1 className="text-6xl font-bold text-primary">{t("notFound.title")}</h1>
       <p className="text-muted-foreground">{t("notFound.message")}</p>
-      <a href="/" className="cosmic-button">
+      <a href="/" className="neon-button">
         {t("notFound.backHome")}
       </a>
     </div>

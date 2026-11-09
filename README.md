@@ -1,86 +1,47 @@
-# Personal Developer Portfolio – React & TailwindCSS
-## Visit the website now at https://portfoliojoseramos.vercel.app/
-<div align="center"><div> <img src="https://img.shields.io/badge/-React-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" /> <img src="https://img.shields.io/badge/-TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss" alt="Tailwind CSS" /> <img src="https://img.shields.io/badge/-Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" /> <img src="https://img.shields.io/badge/-Lucide Icons-FD4D4D?style=for-the-badge&logo=lucide" alt="Lucide Icons" /> <img src="https://img.shields.io/badge/-Radix UI-9D4EDD?style=for-the-badge&logo=data:image/svg+xml;base64..." alt="Radix UI" /> </div> <h3 align="center">A modern, responsive, and animated portfolio website built with React & TailwindCSS</h3> <br /> </div>
+# José Otávio · Backend Developer Portfolio
 
-## 📋 Table of Contents
+**Live:** https://portfoliojoseramos.vercel.app
 
-1. [Introduction](#-introduction)
-2. [Tech Stack](#-tech-stack)
-3. [Features](#-features)
-4. [Quick Start](#-quick-start)
+A terminal-inspired portfolio for a backend developer, built with React, Tailwind CSS v4 and Vite. English by default, with a Portuguese (PT-BR) toggle.
 
----
+## Highlights
 
-## 🚀 Introduction
+- **Boot screen + network background:** a canvas graph of nodes with data packets travelling between them, reacting to the cursor.
+- **Hero terminal:** types a `curl` request and prints a syntax-highlighted JSON response.
+- **Real-world impact:** the iFood API integration case study and before/after performance metrics with animated bars.
+- **Architecture diagram:** an animated SVG request flow (client, API, service, cache, database, queue) with request and response packets.
+- **API playground:** a mock API running in the browser (status, latency, JSON, copy-as-cURL).
+- **Projects as a query:** `SELECT * FROM projects`, with 3D-tilt cards and code previews.
+- **Command palette:** `Ctrl/Cmd + K` to navigate, download the CV, or switch language.
+- **Details:** dark/light theme, scroll progress bar, scroll-spy navigation, reduced-motion support, and a CV that follows the selected language.
 
-This is a personal portfolio website built using **React**, **TailwindCSS**, and **Vite**. It includes dark mode, responsive design, custom animations, and showcases projects, skills, and contact options — all designed to help highlight developer work in a clean, elegant format.
+## Stack
 
----
+React 18 · Vite 5 · Tailwind CSS 4 · Lucide icons · Radix Toast. No animation library: everything is CSS, SVG and canvas.
 
-## ⚙️ Tech Stack
-
-* **React** – Component-based UI development
-* **Vite** – Lightning-fast build tool
-* **TailwindCSS** – Utility-first CSS for styling
-* **Lucide Icons** – Clean and beautiful icon pack
-* **Radix UI** – Accessible component primitives
-* **TypeScript (optional)** – Type safety and tooling
-* **GitHub & Vercel** – Deployment
-
----
-
-## ⚡️ Features
-
-* 🌑 **Light/Dark Mode Toggle**
-  Save theme preference in local storage with beautiful transitions
-
-* 💫 **Animated Backgrounds**
-  Stars, meteors, scroll effects, and glowing UI elements
-
-* 📱 **Responsive Navigation**
-  Desktop and mobile menus with glassmorphism
-
-* 👨‍💻 **Hero & About Sections**
-  Showcase who you are with smooth intro animations and buttons
-
-* 📊 **Skills Grid**
-  Filterable progress bars and categories with animated width
-
-* 🖼️ **Projects Showcase**
-  Display screenshots, tech stacks, and GitHub/demo links
-
-* 📩 **Contact Section**
-  Social icons + responsive contact form with toast notifications
-
-
----
-
-## 👌 Quick Start
-
-### Prerequisites
-
-* [Node.js](https://nodejs.org/)
-* [Git](https://git-scm.com/)
-
-### Clone and Run
+## Run locally
 
 ```bash
 git clone https://github.com/JoseOtavioJunqueira/developer-portfolio-react.git
+cd developer-portfolio-react
 npm install
-npm run dev
+npm run dev      # http://localhost:5173
+npm run build    # production build
+npm run lint
 ```
 
-Your app will be available at: [http://localhost:5173](http://localhost:5173)
+## Project structure
 
----
+```
+src/
+  components/   sections (Hero, About, Experience, Architecture, Skills, ApiPlayground, Projects, Contact) and effects
+  lib/          translations.js (EN/PT), highlight.jsx (JSON highlighter)
+  context/      LanguageContext (language + CV link)
+public/cv/      resumes in English and Portuguese
+```
 
-## 🔗 Useful Links
+Content lives in `src/lib/translations.js`; project cards are defined in `src/components/ProjectsSection.jsx`.
 
-* [React Documentation](https://reactjs.org/)
-* [Tailwind CSS Docs](https://tailwindcss.com/)
-* [Lucide Icons](https://lucide.dev/)
-* [Radix UI](https://www.radix-ui.com/)
-* [Vite](https://vitejs.dev/)
-* [Vercel](https://vercel.com/)
+## License
 
----
+MIT
