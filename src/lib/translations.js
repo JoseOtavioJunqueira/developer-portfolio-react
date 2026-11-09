@@ -260,7 +260,7 @@ export const translations = {
         8: {
           title: "FlowForge",
           description:
-            "Workflow orchestration platform (early stage): NestJS API with JWT auth and a fully designed PostgreSQL schema with workspace-scoped Row Level Security. Live demo available.",
+            "Workflow orchestration platform (early stage): NestJS API with JWT auth and a fully designed PostgreSQL schema with workspace-scoped Row Level Security.",
         },
         9: {
           title: "Financial Sentiment Research",
@@ -585,7 +585,7 @@ export const translations = {
         8: {
           title: "FlowForge",
           description:
-            "Plataforma de orquestração de workflows (estágio inicial): API NestJS com autenticação JWT e schema PostgreSQL totalmente modelado, com Row Level Security por workspace. Demo no ar.",
+            "Plataforma de orquestração de workflows (estágio inicial): API NestJS com autenticação JWT e schema PostgreSQL totalmente modelado, com Row Level Security por workspace.",
         },
         9: {
           title: "Pesquisa em Sentimento Financeiro",
