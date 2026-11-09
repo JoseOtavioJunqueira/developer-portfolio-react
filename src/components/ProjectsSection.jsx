@@ -92,6 +92,7 @@ ALTER TABLE workflows ENABLE ROW LEVEL SECURITY;`,
     tags: ["NestJS", "TypeScript", "PostgreSQL", "JWT"],
     kind: "FULL-STACK",
     githubUrl: "https://github.com/JoseOtavioJunqueira/flowforge",
+    demoUrl: "https://flowforge-henna.vercel.app",
   },
   {
     id: 9,
